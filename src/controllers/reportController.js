@@ -19,7 +19,6 @@ exports.createReport = async (req, res) => {
   }
 };
 
-// Lấy tất cả báo cáo (Admin)
 exports.getAllReports = async (req, res) => {
   try {
     const reports = await Report.find();
@@ -29,7 +28,6 @@ exports.getAllReports = async (req, res) => {
   }
 };
 
-// Lấy báo cáo đã được duyệt (Member)
 exports.getApprovedReports = async (req, res) => {
   try {
     const reports = await Report.find({ isApproved: true });
@@ -39,13 +37,12 @@ exports.getApprovedReports = async (req, res) => {
   }
 };
 
-// Duyệt báo cáo
 exports.approveReport = async (req, res) => {
   try {
     const report = await Report.findById(req.params.id);
     if (!report) return res.status(404).json({ message: "Report not found" });
 
-    report.isApproved = true; // Đánh dấu đã duyệt
+    report.isApproved = true; 
     await report.save();
     res.json(report);
   } catch (error) {
@@ -53,7 +50,6 @@ exports.approveReport = async (req, res) => {
   }
 };
 
-// Xóa báo cáo
 exports.deleteReport = async (req, res) => {
   try {
     const deletedReport = await Report.findByIdAndDelete(req.params.id);
