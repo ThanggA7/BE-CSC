@@ -16,6 +16,6 @@ router.put(
   reportController.approveReport
 );
 
-router.delete("/admin/reports/:id", isAdmin, reportController.deleteReport); // Xóa báo cáo
+router.delete("/admin/reports/:id/delete", isAdmin, reportController.deleteReport); // Xóa báo cáo
 
 module.exports = router;
