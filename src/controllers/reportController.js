@@ -13,7 +13,7 @@ exports.createReport = async (req, res) => {
     });
 
     const savedReport = await newReport.save();
-    res.status(201).json(savedReport);
+    res.status(201).json({ message: "Đã gửi báo cáo thành công !" });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -42,7 +42,7 @@ exports.approveReport = async (req, res) => {
     const report = await Report.findById(req.params.id);
     if (!report) return res.status(404).json({ message: "Report not found" });
 
-    report.isApproved = true; 
+    report.isApproved = true;
     await report.save();
     res.json(report);
   } catch (error) {
@@ -56,6 +56,15 @@ exports.deleteReport = async (req, res) => {
     if (!deletedReport)
       return res.status(404).json({ message: "Report not found" });
     res.json({ message: "Report deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+exports.findReport = async (req, res) => {
+  try {
+    const findRP = await Report.findById(req.params.id);
+    res.json(findRP);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
