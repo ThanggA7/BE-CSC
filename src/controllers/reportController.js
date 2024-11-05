@@ -69,3 +69,13 @@ exports.findReport = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+exports.findReportByLink = async (req, res) => {
+  try {
+    const { link } = req.query;
+    const findRPBL = await Report.findOne({ link });
+    res.json(findRPBL);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};

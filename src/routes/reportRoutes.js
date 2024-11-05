@@ -4,6 +4,7 @@ const reportController = require("../controllers/reportController");
 const isAdmin = require("../middleware/auth");
 
 router.post("/reports", reportController.createReport);
+router.get("/search", reportController.findReportByLink);
 
 router.get("/admin/reports", isAdmin, reportController.getAllReports);
 
@@ -16,6 +17,10 @@ router.put(
   reportController.approveReport
 );
 
-router.delete("/admin/reports/:id/delete", isAdmin, reportController.deleteReport); // Xóa báo cáo
+router.delete(
+  "/admin/reports/:id/delete",
+  isAdmin,
+  reportController.deleteReport
+); // Xóa báo cáo
 
 module.exports = router;
