@@ -3,11 +3,11 @@ const Report = require("../models/Report");
 // Tạo báo cáo mới
 exports.createReport = async (req, res) => {
   try {
-    const { title, link, category, description } = req.body;
+    const { title, url, category, description } = req.body;
 
     const newReport = new Report({
       title,
-      link,
+      url,
       category,
       description,
     });
