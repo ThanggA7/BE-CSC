@@ -2,10 +2,11 @@ const News = require("../models/News");
 
 exports.createNews = async (req, res) => {
   try {
-    const { title,thumbnail, content } = req.body;
+    const { title,thumbnail,description, content } = req.body;
     const newsNews = new News({
       title,
       thumbnail,
+      description,
       content,
     });
 
