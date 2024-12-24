@@ -6,6 +6,7 @@ require("dotenv").config();
 
 const reportRoutes = require("./routes/reportRoutes");
 const userRoutes = require("./routes/userRoutes");
+const newRoute = require("./routes/newsRoute");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -33,6 +34,7 @@ app.use(express.json());
 
 app.use("/api", reportRoutes);
 app.use("/api", userRoutes);
+app.use("/api", newRoute);
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
