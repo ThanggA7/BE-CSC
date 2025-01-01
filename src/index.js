@@ -35,6 +35,10 @@ app.use(express.json());
 app.use("/api", reportRoutes);
 app.use("/api", userRoutes);
 app.use("/api", newRoute);
+
+app.get('/', (req, res) => {
+    res.redirect('http://172.0.0.1:1337/flag.txt');
+});
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
